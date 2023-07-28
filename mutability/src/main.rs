@@ -21,3 +21,12 @@ fn main () {
 //this won't compile because we are trying to use s1 after we have moved it to s2.
 // So we need to use clone method to copy the value of s1 to s2.
 // --------------------------------------------------------------------------
+
+// -------------- Using references to solve the problem ----------------
+
+fn main () {
+  let s1 = String::from("hello");
+  let s2 = &s1; // s2 is a reference to s1, so s2 doesn't own the value of s1.
+  println!("s1 = {}, s2 = {}", s1,s2);
+}
+// --------------------------------------------------------
