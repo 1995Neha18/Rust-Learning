@@ -10,13 +10,13 @@
 
 // Same thing but with strings.
 
-fn main() {
-    let s1 = String::from("hello");
-    // let s2 = s1; (this will throw an error because we are trying to use s1 after we have moved it to s2.)
-    let mut s2 = s1.clone();
-    s2.push_str(", world!");
-    println!("s1 = {}, s2 = {}", s1, s2);
-}
+// fn main() {
+//     let s1 = String::from("hello");
+//     // let s2 = s1; (this will throw an error because we are trying to use s1 after we have moved it to s2.)
+//     let mut s2 = s1.clone();
+//     s2.push_str(", world!");
+//     println!("s1 = {}, s2 = {}", s1, s2);
+// }
 // output :- error[E0382]: borrow of moved value: `s1`,
 //this won't compile because we are trying to use s1 after we have moved it to s2.
 // So we need to use clone method to copy the value of s1 to s2.
@@ -47,12 +47,22 @@ fn main() {
 
 // -------------- Dereferencing in primitive types ----------------
 
-fn plus_one (x: &mut i32) {
- *x = *x + 1;
-}
+// fn plus_one (x: &mut i32) {
+//  *x = *x + 1;
+// }
+
+// fn main () {
+//  let mut x = 10;
+//  plus_one(&mut x);
+//  println!("{}", x);
+// }
+// ----------------------------------------------
+
+// -------------- Using built-in swap function ----------------
 
 fn main () {
- let mut x = 10;
- plus_one(&mut x);
- println!("{}", x);
+   let mut words = vec![String::from("Yellow"), String::from("Blue"), String::from("Red"), String::from("Green")];
+   println!("Before swapping: {:?}", words);
+   words.swap(1, 2);
+   println!("After swapping: {:?}", words);
 }
