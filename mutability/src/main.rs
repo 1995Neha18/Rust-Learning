@@ -33,14 +33,26 @@ fn main() {
 
 // ------------ Function that can change things -------------
 
-fn append_dot(t: &mut String) {
-    t.push_str(".");
-}
+// fn append_dot(t: &mut String) {
+//     t.push_str(".");
+// }
 
-fn main() {
-    let mut s = String::from("Hello");
-    append_dot(&mut s);
-    println!("{}", s);
-}
+// fn main() {
+//     let mut s = String::from("Hello");
+//     append_dot(&mut s);
+//     println!("{}", s);
+// }
 
 // ----------------------------------------------
+
+// -------------- Dereferencing in primitive types ----------------
+
+fn plus_one (x: &mut i32) {
+ *x = *x + 1;
+}
+
+fn main () {
+ let mut x = 10;
+ plus_one(&mut x);
+ println!("{}", x);
+}
