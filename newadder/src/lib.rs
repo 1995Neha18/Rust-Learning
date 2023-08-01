@@ -19,18 +19,18 @@ mod tests {
 
 //--------------- Adding a second test that will fail because we call the panic! macro--------------
 
-// #[cfg(test)]
-// mod tests {
-//     #[test]
-//     fn exploration() {
-//         assert_eq!(2 + 2, 4);
-//     }
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn exploration() {
+        assert_eq!(2 + 2, 4);
+    }
 
-//     #[test]
-//     fn another() {
-//         panic!("Make this test fail");
-//     }
-// }
+    #[test]
+    fn another() {
+        panic!("Make this test fail");
+    }
+}
 
 //--------------- Checking Results with the assert! Macro--------------
 
