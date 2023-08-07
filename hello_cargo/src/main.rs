@@ -32,6 +32,24 @@ async fn main() -> Result<(), reqwest::Error> {
 
     println!("{:#?}", todos);
 
-    println!("{:#?}", todos);
-    Ok(())
+     // Send and receive type-checked JSON
+
+     let new_todo = Todo {
+      user_id: 1,
+      id: None,
+      title: "Subscribe to Let's Get Rusty".to_owned(),
+      completed: false
+  };
+
+  let new_todo: Todo = reqwest::Client::new()
+      .post("https://jsonplaceholder.typicode.com/todos")
+      .json(&new_todo)
+      .send()
+      .await?
+      .json()
+      .await?;
+
+  println!("{:#?}", new_todo);
+
+  Ok(())
 }
