@@ -1,4 +1,4 @@
-// mod neha;
+mod neha;
 
 // fn main() {
 //     neha::hello();
@@ -12,17 +12,20 @@
 // assert_eq! // when the two values are equal
 // assert_ne! // when the two values are not equal
 
-macro_rules! print_twice {
-    ($expr:expr) => {
-   println!("{:?} = {:?}",stringify!($expr), $expr);
-   println!("{:?} = {:?}",stringify!($expr), $expr);
-    };
-}
+
+
+// Import the macro from the macro_rules.rs file
+#[macro_use]
+mod macro_rules;
 
 fn main() {
     let x = 5;
     let y = 10;
+    
+    let sum = add_numbers!(x, y); // Using the macro
+    
+    println!("Sum: {}", sum);
 
-    print_twice!(x + y);
-    print_twice!(x * y);
+    neha::hello();
 }
+
