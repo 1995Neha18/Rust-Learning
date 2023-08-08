@@ -47,11 +47,32 @@
 
 // ------------ generating random number within a range -------------------
 
-use rand::Rng; 
+// use rand::Rng; 
+
+// pub fn random_num() {
+//     // Generate random number in the range [0, 99]
+//     let num = rand::thread_rng().gen_range(0..100);
+//     println!("{}", num);
+// }
+
+// -----------  Generate Numbers with Uniform Distribution -------------------
+
+use rand::distributions::{Distribution, Uniform};
 
 pub fn random_num() {
-    // Generate random number in the range [0, 99]
-    let num = rand::thread_rng().gen_range(0..100);
-    println!("{}", num);
+    let mut rng = rand::thread_rng();
+    let dice = Uniform::from(1..7);
+
+    loop {
+        let throw = dice.sample(&mut rng);
+        println!("Roll the dice: {}", throw);
+        if throw == 6 {
+            break;
+        }
+    }
 }
+
+
+
+
 
