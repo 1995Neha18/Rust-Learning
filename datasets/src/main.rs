@@ -58,8 +58,14 @@
 //  println!("{:?}", dataset);
 // }
 
-mod decision_tree;
+// mod decision_tree;
+
+// fn main() {
+//    decision_tree::run_decision_tree();
+// }
+
+mod random;
 
 fn main() {
-   decision_tree::run_decision_tree();
+   random::random_num();
 }
