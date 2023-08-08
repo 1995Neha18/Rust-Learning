@@ -68,15 +68,31 @@
 //     input * input
 // }
 
+// --------------------------------------------
+
+// use num_traits::PrimInt; // 0.2.1
+
+// fn main() {
+//     let i1: i32 = 3;
+
+//     println!("{:?}", sqr(i1));
+// }
+
+// fn sqr<T: PrimInt>(input: T) -> T {
+//     input + input
+// }
+
+// -----------------------------------------
 
 use num_traits::PrimInt; // 0.2.1
 
 fn main() {
     let i1: i32 = 3;
+    let i2: i32 = 12;
 
-    println!("{:?}", sqr(i1));
+    println!("Result: {:?}", add(i1, i2));
 }
 
-fn sqr<T: PrimInt>(input: T) -> T {
-    input + input
+fn add<T: PrimInt>(input1: T, input2: T) -> T {
+    input1 + input2
 }
