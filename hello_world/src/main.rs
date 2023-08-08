@@ -14,7 +14,6 @@
 //     input.sqrt()
 // }
 
-
 // --------------------- for Integer ----------------
 
 // use num_traits::PrimInt;
@@ -37,25 +36,34 @@
 
 // --------------------------------------------------
 
-use num_traits::Float;
+// use num_traits::Float;
 
-trait Num {
-    fn y(self) -> Self;
-}
+// trait Num {
+//     fn y(self) -> Self;
+// }
 
-impl<T: Float> Num for T {
-    fn y(self) -> Self {
-        println!("called");
-        return self;
-    }
-}
+// impl<T: Float> Num for T {
+//     fn y(self) -> Self {
+//         println!("called");
+//         return self;
+//     }
+// }
+
+// fn main() {
+//     let x:f32 = 56.2;
+//     println!("{}", x.y());
+// }
+
+// ---------------------------------------
+
+use num_traits::PrimInt; // 0.2.1
 
 fn main() {
-    let x:f32 = 56.2;
-    println!("{}", x.y());
+    let i1: i32 = 3;
+
+    println!("{:?}", sqr(i1));
 }
 
-
-
-
-
+fn sqr<T: PrimInt>(input: T) -> T {
+    input * input
+}
