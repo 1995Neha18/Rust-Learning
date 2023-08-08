@@ -17,13 +17,33 @@
 
 // --------------------- for Integer ----------------
 
-use num_traits::PrimInt;
+// use num_traits::PrimInt;
 
-trait Trait {
+// trait Num {
+//     fn y(self) -> Self;
+// }
+
+// impl<T: PrimInt> Num for T {
+//     fn y(self) -> Self {
+//         println!("called");
+//         return self;
+//     }
+// }
+
+// fn main() {
+//     let x = 56;
+//     println!("{}", x.y());
+// }
+
+// --------------------------------------------------
+
+use num_traits::Float;
+
+trait Num {
     fn y(self) -> Self;
 }
 
-impl<T: PrimInt> Trait for T {
+impl<T: Float> Num for T {
     fn y(self) -> Self {
         println!("called");
         return self;
@@ -31,9 +51,11 @@ impl<T: PrimInt> Trait for T {
 }
 
 fn main() {
-    let x = 56;
+    let x:f32 = 56.2;
     println!("{}", x.y());
 }
+
+
 
 
 
