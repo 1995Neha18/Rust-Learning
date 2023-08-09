@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize}; // it is used to serialize and deserialize the data
+use serde::{ Deserialize, Serialize }; // it is used to serialize and deserialize the data
 
-#[derive(Debug, Serialize, Deserialize)] // 
+#[derive(Debug, Serialize, Deserialize)] //
 struct Todo {
     #[serde(rename = "userId")]
     user_id: i32,
@@ -13,15 +13,31 @@ struct Todo {
 
 // calling an API and getting the response in json then converting it into a vector of Todo or (struct)
 async fn main() -> Result<(), reqwest::Error> {
-     let todos: Vec<Todo> = reqwest::Client::new()
+    let todos: Vec<Todo> = reqwest::Client
+        ::new()
         .get("https://jsonplaceholder.typicode.com/todos?userId=1")
-        .send()
-        .await? // await the response
-        .json() // turn the response in json
-        //.text()  // turn the response in string
-        .await?; // await the operation
+        .send().await
+        ? // await the response
+        .json().await?; // turn the response in json
+    //.text()  // turn the response in string // await the operation
+    println!("{:#?}", todos);
 
-     println!("{:#?}",todos);
+    // --------------- taking rust type converting into json and sending it to an API ----------------
 
-     Ok(())
+    let new_todo: Todo = Todo {
+        user_id: 1,
+        id: None,
+        title: "Learn Rust".to_owned(),
+        completed: false,
+    };
+
+    let new_todo: Todo = reqwest::Client::new()
+        .post("https://jsonplaceholder.typicode.com/todos")
+        .json(&new_todo) // converting the rust type into json or serializing the data
+        .send().await?
+        .json().await?;
+
+    println!("{:#?}", new_todo);
+
+    Ok(())
 }
