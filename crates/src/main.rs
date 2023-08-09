@@ -39,5 +39,24 @@ async fn main() -> Result<(), reqwest::Error> {
 
     println!("{:#?}", new_todo);
 
+      // Send and receive arbitrary JSON
+
+      let new_todo: serde_json::Value = reqwest::Client
+      ::new()
+      .post("https://jsonplaceholder.typicode.com/todos")
+      .json(
+          &serde_json::json!({
+      "userId": 1,
+      "title": "Hello World".to_owned(),
+      "completed": false
+  })
+      )
+      .send().await?
+      .json().await?;
+
+  println!("{:#?}", new_todo);
+
     Ok(())
 }
+
+// serde_json = "1.0" // it gives us the access to the macro that allows us to construct arbitrary JSON objects.
