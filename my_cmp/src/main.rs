@@ -17,23 +17,39 @@
 // }
 
 
+// use std::cmp::Ordering;
+
+// fn main() {
+//     let mut strings = vec![
+//      "banana".to_string(),
+//      "cherry".to_string(),
+//      "grape".to_string(),
+//      "apple".to_string(),
+//         "date".to_string(),
+//     ];
+
+//     // Sort the vector of strings using custom comparison logic
+//     strings.sort_by(|a, b| a.partial_cmp(b).unwrap_or(Ordering::Equal));
+
+//     // Print the sorted strings
+//     for s in &strings {
+//         println!("{}", s);
+//     }
+// }
+
 use std::cmp::Ordering;
 
 fn main() {
-    let mut strings = vec![
-     "banana".to_string(),
-     "cherry".to_string(),
-     "grape".to_string(),
-     "apple".to_string(),
-        "date".to_string(),
-    ];
+    let number = 42;
+    // let number2 = 50;
+    let string = "apple";
 
-    // Sort the vector of strings using custom comparison logic
-    strings.sort_by(|a, b| a.partial_cmp(b).unwrap_or(Ordering::Equal));
+    // let comparison = number.partial_cmp(&number2);
+    let comparison = number.partial_cmp(&string);
 
-    // Print the sorted strings
-    for s in &strings {
-        println!("{}", s);
+    match comparison {
+        Some(ordering) => println!("Comparison result: {:?}", ordering),
+        None => println!("Comparison not applicable"),
     }
 }
 
