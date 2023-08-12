@@ -1,5 +1,5 @@
 use reqwest::Client;
-use serde::{Deserialize, Serialize};
+use serde::{ Deserialize, Serialize };
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Todo {
@@ -12,20 +12,15 @@ struct Todo {
 
 #[tokio::main]
 async fn main() -> Result<(), reqwest::Error> {
-    let updated_todo = Todo {
-        user_id: 1,
-        id: Some(1),
-        title: "Updated Title".to_string(),
-        completed: true,
-    };
+    let updated_fields = serde_json::json!({
+    "title": "Hello Neha!".to_owned()
+});
 
     let updated_todo: Todo = Client::new()
-        .put("https://jsonplaceholder.typicode.com/todos/1") 
-        .json(&updated_todo)
-        .send()
-        .await?
-        .json()
-        .await?;
+        .patch("https://jsonplaceholder.typicode.com/todos/1")
+        .json(&updated_fields)
+        .send().await?
+        .json().await?;
 
     println!("{:#?}", updated_todo);
     Ok(())
