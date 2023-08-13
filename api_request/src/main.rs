@@ -62,25 +62,85 @@
 
 // ---------------------------------------------
 
-#[macro_use]
-extern crate lazy_static;
+// use std::collections::HashMap;
+
+// fn get_hashmap() -> HashMap<u32, &'static str> {
+//     let mut m = HashMap::new();
+//     m.insert(0, "foo");
+//     m.insert(1, "bar");
+//     m.insert(2, "baz");
+//     m
+// }
+
+// fn main() {
+//     // First access to the HashMap initializes it
+//     let hashmap = get_hashmap();
+//     println!("The entry for `0` is \"{}\".", hashmap.get(&0).unwrap());
+
+//     // Any further access to the HashMap just returns the computed value
+//     println!("The entry for `1` is \"{}\".", hashmap.get(&1).unwrap());
+// }
+
+
+// ----------------------------------------------------------------------------
 
 use std::collections::HashMap;
 
-lazy_static! {
-    static ref HASHMAP: HashMap<u32, &'static str> = {
-        let mut m = HashMap::new();
-        m.insert(0, "foo");
-        m.insert(1, "bar");
-        m.insert(2, "baz");
-        m
-    };
-}
-
 fn main() {
-    // First access to `HASHMAP` initializes it
-    println!("The entry for `0` is \"{}\".", HASHMAP.get(&0).unwrap());
-
-    // Any further access to `HASHMAP` just returns the computed value
-    println!("The entry for `1` is \"{}\".", HASHMAP.get(&1).unwrap());
+    let mut hashmap = HashMap::new();
+    
+    // insert() method
+    hashmap.insert("key1", "value1");
+    hashmap.insert("key2", "value2");
+    
+    // get() method
+    if let Some(value) = hashmap.get("key1") {
+        println!("Value for key 'key1': {}", value);
+    }
+    
+    // remove() method
+    if let Some(removed_value) = hashmap.remove("key2") {
+        println!("Removed value for key 'key2': {}", removed_value);
+    }
+    
+    // contains_key() method
+    if hashmap.contains_key("key1") {
+        println!("The map contains 'key1'.");
+    } else {
+        println!("The map does not contain 'key1'.");
+    }
+    
+    // len() method
+    println!("Number of key-value pairs in the map: {}", hashmap.len());
+    
+    // is_empty() method
+    if hashmap.is_empty() {
+        println!("The map is empty.");
+    } else {
+        println!("The map is not empty.");
+    }
+    
+    // keys() method
+    for key in hashmap.keys() {
+        println!("Key: {}", key);
+    }
+    
+    // values() method
+    for value in hashmap.values() {
+        println!("Value: {}", value);
+    }
+    
+    // iter() method
+    for (key, value) in hashmap.iter() {
+        println!("Key: {}, Value: {}", key, value);
+    }
+    
+    // entry() method
+    let entry = hashmap.entry("key3").or_insert("default");
+    println!("Value for key 'key3': {}", entry);
+    
+    // clear() method
+    hashmap.clear();
+    println!("After clearing the map, is it empty? {}", hashmap.is_empty());
 }
+
