@@ -157,9 +157,19 @@
 
 // -------------------- Creating Unique ID -----------------------------
 
-use uuid::Uuid;
+// use uuid::Uuid;
 
-fn main() {
-    let id = Uuid::new_v4();
-    println!("{}", id);
+// fn main() {
+//     let id = Uuid::new_v4();
+//     println!("{}", id);
+// }
+
+//If you have a UUID value, you can use its string literal form inline:
+
+use uuid::{Uuid,uuid};
+
+fn main()
+{
+   const ID:Uuid = uuid!("936DA01F9ABD4d9d80C702AF85C822A8");
+   println!("{}",ID);
 }
