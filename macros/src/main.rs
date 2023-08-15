@@ -65,19 +65,50 @@
 
 // -------------------------------------------------
 
-#[macro_export]
+// #[macro_export]
 
-macro_rules! square {
-    ($x:expr,$y:expr) => {
-         ($x + $y)*($x + $y)
-    }
+// macro_rules! square {
+//     ($x:expr,$y:expr) => {
+//          ($x + $y)*($x + $y)
+//     }
+// }
+
+// fn main() {
+//     let x = 9;
+//     let y = 10;
+//     println!("The sqaure of {}+ {} is {}", x,y, square!(x,y));
+    
+// }
+
+// ------------- Repeat 3 times -----------------------------
+
+macro_rules! repeat_3_times {
+ ($expr:expr) => {
+     $expr; $expr; $expr;
+ };
 }
 
 fn main() {
-    let x = 9;
-    let y = 10;
-    println!("The sqaure of {}+ {} is {}", x,y, square!(x,y));
-    
+ repeat_3_times!(println!("Hello, Rust!"));
 }
+
+// ---------------- Pattern Matching ----------------------------
+
+// #[macro_export]
+// macro_rules! match_example {
+//  ($expr:expr) => {
+//      match $expr {
+//          0 => println!("Zero"),
+//          1 => println!("One"),
+//          _ => println!("Other"),
+//      }
+//  };
+// }
+
+// fn main() {
+//  match_example!(0);
+//  match_example!(1);
+//  match_example!(42);
+// }
 
 
