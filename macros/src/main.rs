@@ -55,7 +55,6 @@
 //     //     }
 //     // }
 
-
 //     let numbers = [2, 1, 17, 99, 34, 56];
 //     let numbers_iterator = numbers.iter();
 //     for (i,number) in numbers_iterator.enumerate() {
@@ -77,7 +76,7 @@
 //     let x = 9;
 //     let y = 10;
 //     println!("The sqaure of {}+ {} is {}", x,y, square!(x,y));
-    
+
 // }
 
 // ------------- Repeat 3 times -----------------------------
@@ -113,16 +112,28 @@
 //  match_example!(42);
 // }
 
-
 // ----------------------------------------------
 
+// pub mod my_macros;
 
+// fn main() {
+//     // Use the macro to add two numbers
+//     let result: i32 = add_numbers!(5, 7);
+//     println!("Result: {}", result);
+// }
 
-pub mod my_macros;
+// --------------------------------------------
 
+macro_rules! platform_dependent_code {
+ () => {
+     #[cfg(target_os = "linux")]
+     println!("Running on Linux");
+
+     #[cfg(target_os = "windows")]
+     println!("Running on Windows");
+ };
+}
 
 fn main() {
-    // Use the macro to add two numbers
-    let result: i32 = add_numbers!(5, 7);
-    println!("Result: {}", result);
+ platform_dependent_code!();
 }
