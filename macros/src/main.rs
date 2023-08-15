@@ -82,33 +82,35 @@
 
 // ------------- Repeat 3 times -----------------------------
 
-macro_rules! repeat_3_times {
- ($expr:expr) => {
-     $expr; $expr; $expr;
- };
-}
-
-fn main() {
- repeat_3_times!(println!("Hello, Rust!"));
-}
-
-// ---------------- Pattern Matching ----------------------------
-
-// #[macro_export]
-// macro_rules! match_example {
+// macro_rules! repeat_3_times {
 //  ($expr:expr) => {
-//      match $expr {
-//          0 => println!("Zero"),
-//          1 => println!("One"),
-//          _ => println!("Other"),
-//      }
+//      $expr; $expr; $expr;
 //  };
 // }
 
 // fn main() {
-//  match_example!(0);
-//  match_example!(1);
-//  match_example!(42);
+//  repeat_3_times!(println!("Hello, Rust!"));
 // }
+
+// ---------------- Pattern Matching ----------------------------
+
+#[macro_export]
+macro_rules! match_example {
+ ($expr:expr) => {
+     match $expr {
+         0 => println!("Zero"),
+         1 => println!("One"),
+         10 => println!("Ten"),
+         _ => println!("Other"),
+     }
+ };
+}
+
+fn main() {
+ match_example!(0);
+ match_example!(1);
+ match_example!(10);
+ match_example!(42);
+}
 
 
