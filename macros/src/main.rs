@@ -124,16 +124,44 @@
 
 // --------------------------------------------
 
-macro_rules! platform_dependent_code {
- () => {
-     #[cfg(target_os = "linux")]
-     println!("Running on Linux");
+// macro_rules! platform_dependent_code {
+//  () => {
+//      #[cfg(target_os = "linux")]
+//      println!("Running on Linux");
 
-     #[cfg(target_os = "windows")]
-     println!("Running on Windows");
- };
+//      #[cfg(target_os = "windows")]
+//      println!("Running on Windows");
+//  };
+// }
+
+// fn main() {
+//  platform_dependent_code!();
+// }
+
+// ----------------------- Creating Structs ----------------------------
+
+pub mod my_macros;
+
+struct Person {
+    name: String,
+    age: u32,
 }
 
 fn main() {
- platform_dependent_code!();
+    let person1 = create_person!("Alice", 30);
+    let person2 = create_person!("Bob", 25);
+    let person3 = create_person!("Charlie", 40);
+    let person4 = create_person!("David", 22);
+
+    println!("Name: {}, Age: {}", person1.name, person1.age);
+    println!("Name: {}, Age: {}", person2.name, person2.age);
+    println!("Name: {}, Age: {}", person3.name, person3.age);
+    println!("Name: {}, Age: {}", person4.name, person4.age);
 }
+
+
+
+
+
+
+
