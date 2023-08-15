@@ -94,23 +94,35 @@
 
 // ---------------- Pattern Matching ----------------------------
 
-#[macro_export]
-macro_rules! match_example {
- ($expr:expr) => {
-     match $expr {
-         0 => println!("Zero"),
-         1 => println!("One"),
-         10 => println!("Ten"),
-         _ => println!("Other"),
-     }
- };
-}
+// #[macro_export]
+// macro_rules! match_example {
+//  ($expr:expr) => {
+//      match $expr {
+//          0 => println!("Zero"),
+//          1 => println!("One"),
+//          10 => println!("Ten"),
+//          _ => println!("Other"),
+//      }
+//  };
+// }
+
+// fn main() {
+//  match_example!(0);
+//  match_example!(1);
+//  match_example!(10);
+//  match_example!(42);
+// }
+
+
+// ----------------------------------------------
+
+
+
+pub mod my_macros;
+
 
 fn main() {
- match_example!(0);
- match_example!(1);
- match_example!(10);
- match_example!(42);
+    // Use the macro to add two numbers
+    let result: i32 = add_numbers!(5, 7);
+    println!("Result: {}", result);
 }
-
-
