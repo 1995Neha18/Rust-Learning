@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 rusb = "0.9"
+usb_enumeration = "0.2.0"
