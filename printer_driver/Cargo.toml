@@ -1,0 +1,11 @@
+[package]
+name = "printer_driver"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+winapi = { version = "0.3.9", features = ["debugapi"], optional = true }
+winit = "0.28.6"
+printpdf = "0.5.3"
