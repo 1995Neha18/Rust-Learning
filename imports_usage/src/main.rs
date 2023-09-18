@@ -14,15 +14,30 @@
 
 // --------------------- Example-02: Setting Environment Variables --------------------
 
-use std::env;
- fn main(){
-    // set a custom variable.
-    env::set_var("MY VARIABLE", "Hello, Rust!");
+// use std::env;
+//  fn main(){
+//     // set a custom variable.
+//     env::set_var("MY VARIABLE", "Hello, Rust!");
 
-    if let Ok(value) = env::var("MY VARIABLE"){
-       println!("MY VARIABLE: {}", value)
+//     if let Ok(value) = env::var("MY VARIABLE"){
+//        println!("MY VARIABLE: {}", value)
+//     }
+//     else {
+//       println!("MY VARIABLE environment variable not found")
+//     }
+//  }
+
+// ------------------ Example-03: Command-Line Arguments ------------------
+
+use std::env;
+
+fn main() {
+    // Access command-line arguments
+    let args: Vec<String> = env::args().collect();
+
+    println!("Program name: {}", args[0]);
+
+    for (index, arg) in args.iter().enumerate() {
+        println!("Arg {}: {}", index, arg);
     }
-    else {
-      println!("MY VARIABLE environment variable not found")
-    }
- }
+}
