@@ -29,15 +29,28 @@
 
 // ------------------ Example-03: Command-Line Arguments ------------------
 
-use std::env;
+// use std::env;
 
-fn main() {
-    // Access command-line arguments
-    let args: Vec<String> = env::args().collect();
+// fn main() {
+//     // Access command-line arguments
+//     let args: Vec<String> = env::args().collect();
 
-    println!("Program name: {}", args[0]);
+//     println!("Program name: {}", args[0]);
 
-    for (index, arg) in args.iter().enumerate() {
-        println!("Arg {}: {}", index, arg);
-    }
+//     for (index, arg) in args.iter().enumerate() {
+//         println!("Arg {}: {}", index, arg);
+//     }
+// }
+
+// ---------------------------------------------------------------------------------------------------------
+
+
+// ------------- Example-01: ------------------
+
+use std::fs;
+
+fn main() -> std::io::Result<()> {
+    fs::write("foo.txt", "Lorem ipsum")?;
+    fs::write("bar.txt", "dolor sit")?;
+    Ok(())
 }
