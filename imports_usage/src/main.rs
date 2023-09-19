@@ -47,10 +47,25 @@
 
 // ------------- Example-01: ------------------
 
-use std::fs;
+// use std::fs;
 
-fn main() -> std::io::Result<()> {
-    fs::write("foo.txt", "Lorem ipsum")?;
-    fs::write("bar.txt", "dolor sit")?;
+// fn main() -> std::io::Result<()> {
+//     fs::write("foo.txt", "Lorem ipsum")?;
+//     fs::write("bar.txt", "dolor sit")?;
+//     Ok(())
+// }
+
+// -------------- Example-02: ------------------------
+
+use std::fs::File;
+use std::io::BufReader;
+use std::io::prelude::*;
+
+fn main()-> std::io::Result<()>{
+    let file = File::open("foo.txt")?;
+    let mut buf_reader = BufReader::new(file);
+    let mut contents = String::new();
+    buf_reader.read_to_string(&mut contents)?;
+    assert_eq!("Hello World!", contents);
     Ok(())
 }
