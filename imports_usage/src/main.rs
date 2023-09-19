@@ -4,13 +4,12 @@
 // fn main() {
 //     if let Ok(user) = env::var("USERNAME") {
 //        println!("User: {}", user)
-       
+
 //     }
 //     else {
 //       println!("USERNAME environment variable not found")
 //     }
 // }
-
 
 // --------------------- Example-02: Setting Environment Variables --------------------
 
@@ -44,7 +43,6 @@
 
 // ---------------------------------------------------------------------------------------------------------
 
-
 // ------------- Example-01: ------------------
 
 // use std::fs;
@@ -57,15 +55,47 @@
 
 // -------------- Example-02: ------------------------
 
-use std::fs::File;
-use std::io::BufReader;
-use std::io::prelude::*;
+// use std::fs::File;
+// use std::io::BufReader;
+// use std::io::prelude::*;
 
-fn main()-> std::io::Result<()>{
-    let file = File::open("foo.txt")?;
-    let mut buf_reader = BufReader::new(file);
-    let mut contents = String::new();
-    buf_reader.read_to_string(&mut contents)?;
-    assert_eq!("Hello World!", contents);
-    Ok(())
+// fn main()-> std::io::Result<()>{
+//     let file = File::open("foo.txt")?;
+//     let mut buf_reader = BufReader::new(file);
+//     let mut contents = String::new();
+//     buf_reader.read_to_string(&mut contents)?;
+//     assert_eq!("Hello World!", contents);
+//     Ok(())
+// }
+
+// The read_to_string method is called on the BufReader.
+// It reads the contents of the file into the contents string.
+// The &mut contents part means that the data will be written into the contents string.
+// Again, the ? operator is used to handle potential errors.
+
+// ------------------- impl block usecases ---------------------
+
+struct Person {
+    name: String,
+    age: u32,
+}
+
+impl Person {
+    // Constructor method to create a new Person
+    fn new(name: &str, age: u32) -> Self {
+        Person {
+            name: name.to_string(),
+            age,
+        }
+    }
+
+    fn display_info(&self) {
+        println!("Name: {}, Age: {}", self.name, self.age);
+    }
+}
+
+fn main() {
+    // Create a Person instance using the constructor
+    let person1 = Person::new("Neha", 28);
+    person1.display_info();
 }
