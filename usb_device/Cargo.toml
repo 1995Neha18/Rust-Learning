@@ -8,3 +8,6 @@ edition = "2021"
 [dependencies]
 rusb = "0.9"
 usb_enumeration = "0.2.0"
+serialport = "4.2.2"
+uuid = "1.4.1"
+printers = "1.2.0"

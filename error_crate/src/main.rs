@@ -10,7 +10,7 @@ fn divide(a: i32, b: i32) -> Result<f64> {
 }
 
 fn main() {
-    match divide(10, 2) {
+    match divide(10, 3) {
         Ok(result) => println!("Result: {}", result),
         Err(err) => match err {
             LinearError::InvalidInput => println!("Invalid input"),

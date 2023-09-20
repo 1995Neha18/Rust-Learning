@@ -1,24 +1,27 @@
-// fn main() { // immutable variable
+// fn main() { // mutable variable
 //  let mut x = 5;
 //  println!("The value of x is: {x}");
 //  x = 6;
 //  println!("The value of x is: {x}");
 // }
 
+
 // fn main() { // shadowing
 //  let x = 5;
-
-//  let x = x + 1;
+ 
 
 //  {
-//      let x = x * 2;
+//     let x =  x + 2; // 12
+
 //      println!("The value of x in the inner scope is: {x}");
 //  }
+
+//  let x = x + 2; // 8
 
 //  println!("The value of x is: {x}");
 // }
 
-// let guess: u32 = "42".parse().expect("Not a number!"); // type annotation
+
 
 // fn main() { //tuple
 //  let tup: (i32, f64, u8) = (500, 6.4, 1);
@@ -106,7 +109,7 @@
 //  }
 // }
 
-//output: the value is: 10
+// output: the value is: 10
 // the value is: 20
 // the value is: 30
 // the value is: 40
@@ -126,4 +129,5 @@
 //  }
 //  println!("LIFTOFF!!!");
 // }
+
 

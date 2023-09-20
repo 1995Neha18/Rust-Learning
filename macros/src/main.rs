@@ -143,28 +143,30 @@
 
 // ----------------------- Creating Structs ----------------------------
 
-pub mod my_macros;
+// pub mod my_macros;
 
-struct Person {
-    name: String,
-    age: u32,
-    person_a: PersonA,
-}
+// struct Person {
+//     name: String,
+//     age: u32,
+//     person_a: PersonA,
+// }
 
-struct PersonA {
-    id: u32,
-    address: String,
-    name: String, 
-}
-fn main() {
-    let person1 = create_person!("Alice", 30, 1, "123 Main St");
-    let person2 = create_person!("Bob", 25, 2, "456 Elm St");
+// struct PersonA {
+//     id: u32,
+//     address: String,
+//     name: String,
+// }
+// fn main() {
+//     let person1 = create_person!("Alice", 30, 1, "123 Main St");
+//     let person2 = create_person!("Bob", 25, 2, "456 Elm St");
 
-    println!("Name: {}, Age: {}", person1.name, person1.age);
-    println!("ID: {}, Address: {}", person1.person_a.id, person1.person_a.address);
-    println!("PersonA Name: {}", person1.person_a.name);
+//     println!("Name: {}, Age: {}", person1.name, person1.age);
+//     println!("ID: {}, Address: {}", person1.person_a.id, person1.person_a.address);
+//     println!("PersonA Name: {}", person1.person_a.name);
 
-    println!("Name: {}, Age: {}", person2.name, person2.age);
-    println!("ID: {}, Address: {}", person2.person_a.id, person2.person_a.address);
-    println!("PersonA Name: {}", person2.person_a.name);
-}
+//     println!("Name: {}, Age: {}", person2.name, person2.age);
+//     println!("ID: {}, Address: {}", person2.person_a.id, person2.person_a.address);
+//     println!("PersonA Name: {}", person2.person_a.name);
+// }
+
+

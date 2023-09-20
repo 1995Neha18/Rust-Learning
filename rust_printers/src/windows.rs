@@ -1,6 +1,5 @@
 use std::process::Command;
 use std::str;
-
 use crate::printer;
 
 /**
@@ -27,12 +26,14 @@ pub fn get_printers() -> Vec<printer::Printer> {
             let name = line[0].split(":").last().unwrap().trim();
             let driver_name = line[1].split(":").last().unwrap().trim();
 
-            printers.push(printer::Printer::new(
-                name.to_string(),
-                name.to_string(),
-                driver_name.to_string(),
-                &self::print,
-            ));
+            printers.push(
+                printer::Printer::new(
+                    name.to_string(),
+                    name.to_string(),
+                    driver_name.to_string(),
+                    &self::print
+                )
+            );
         }
 
         return printers;
@@ -46,10 +47,13 @@ pub fn get_printers() -> Vec<printer::Printer> {
  */
 pub fn print(printer_system_name: &str, file_path: &str) -> Result<bool, String> {
     let child = Command::new("powershell")
-        .arg(format!(
-            "Get-Content -Path \"{}\" |  Out-Printer -Name \"{}\"",
-            file_path, printer_system_name
-        ))
+        .arg(
+            format!(
+                "Get-Content -Path \"{}\" |  Out-Printer -Name \"{}\"",
+                file_path,
+                printer_system_name
+            )
+        )
         .spawn()
         .unwrap();
 

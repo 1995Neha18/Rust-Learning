@@ -1,16 +1,16 @@
-pub fn add_two(a: i32) -> i32 {
-    a + 2
-}
+// pub fn add_two(a: i32) -> i32 {
+//     a + 2
+// }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+// #[cfg(test)]
+// mod tests {
+//     use super::*;
 
-    #[test]
-    fn it_adds_two() {
-        assert_eq!(4, add_two(2));
-    }
-}
+//     #[test]
+//     fn it_adds_two() {
+//         assert_eq!(4, add_two(2));
+//     }
+// }
 
 
 //Adding Custom Failure Messages
@@ -147,6 +147,24 @@ mod tests {
 // fn expensive_test() {
 //     // code that takes an hour to run
 // }
+
+// -------------- &self --------------
+
+// &self: This is a reference to an instance of the Rectangle struct on which the method is called.
+// It represents the instance itself (the "receiver" of the method call).
+// The & before self indicates that it's a reference,
+// meaning the method won't take ownership of the instance, but rather it will borrow it.
+
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn it_works() {
+        let result = 2 + 2;
+        assert_eq!(result, 4);
+    }
+}
+
 
 
 

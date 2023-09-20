@@ -164,7 +164,7 @@
 //     println!("{}", id);
 // }
 
-//If you have a UUID value, you can use its string literal form inline:
+// ------- If you have a UUID value, you can use its string literal form inline: ------------
 
 use uuid::{Uuid,uuid};
 
@@ -172,4 +172,19 @@ fn main()
 {
    const ID:Uuid = uuid!("936DA01F9ABD4d9d80C702AF85C822A8");
    println!("{}",ID);
+
 }
+
+// -------------- we can also parse UUIDs without needing any crate features: ----------------
+
+// use uuid::{Uuid, Version};
+
+// fn main() -> Result<(), Box<dyn std::error::Error>> {
+//     let my_uuid = Uuid::parse_str("67e55044-10b1-426f-9247-bb680e5fe0c8")?;
+
+//     assert_eq!(Some(Version::Random), my_uuid.get_version());
+
+//     println!("UUID: {}", my_uuid);
+
+//     Ok(())
+// }

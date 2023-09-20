@@ -62,7 +62,7 @@
 
 fn main () {
    let mut words = vec![String::from("Yellow"), String::from("Blue"), String::from("Red"), String::from("Green")];
-   println!("Before swapping: {:?}", words);
+   println!("Before swapping: {:?}", words);  // {:?} is used to print the vector in a debug format .
    words.swap(1, 2);
    println!("After swapping: {:?}", words);
 }

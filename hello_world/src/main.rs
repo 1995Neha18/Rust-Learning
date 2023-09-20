@@ -84,15 +84,21 @@
 
 // -----------------------------------------
 
-use num_traits::PrimInt; // 0.2.1
+// use num_traits::PrimInt; // 0.2.1
 
-fn main() {
-    let i1: i32 = 3;
-    let i2: i32 = 12;
+// fn main() {
+//     let i1: i32 = 3;
+//     let i2: i32 = 12;
+//     // let i2: i64 = 12; // error cannot add `i32` to `i64`
 
-    println!("Result: {:?}", add(i1, i2));
-}
+//     println!("Result: {:?}", add(i1, i2));
+// }
 
-fn add<T: PrimInt>(input1: T, input2: T) -> T {
-    input1 + input2
-}
+// fn add<T: PrimInt>(input1: T, input2: T) -> T {
+//     input1 + input2
+// }
+
+// ----------------------------------------------------------
+
+
+
