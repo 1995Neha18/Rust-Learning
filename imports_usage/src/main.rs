@@ -85,6 +85,12 @@ impl Person {
     fn new(name: &str, age: u32) -> Self {
         Person {
             name: name.to_string(),
+            // Ownership: String owns its data, while &str is a borrowed reference to a string.
+            // The name parameter in your new method is of type &str,
+            // meaning it's a reference to a string owned by someone else.
+            // The name.to_string() expression creates a new String instance that owns its data,
+            // making it independent of the original borrowed reference.
+
             age,
         }
     }
@@ -97,5 +103,7 @@ impl Person {
 fn main() {
     // Create a Person instance using the constructor
     let person1 = Person::new("Neha", 28);
+    let person2 = Person::new("Riya", 25);
     person1.display_info();
+    person2.display_info();
 }
