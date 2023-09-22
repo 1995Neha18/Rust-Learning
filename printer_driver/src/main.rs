@@ -1,27 +1,24 @@
-extern crate winapi;
-
-use std::os::windows::ffi::OsStrExt;
-use winapi::um::winspool::{
-    OpenPrinterW, StartDocPrinterW, StartPagePrinter, WritePrinter, EndPagePrinter, EndDocPrinter, ClosePrinter,
-};
-use std::ptr;
-use std::ffi::OsStr;
-use std::iter::once;
-use std::os::windows::raw::HANDLE;
-
-// Define the print_document function here...
-
+use std::str;
+use std::process::Command;
 
 fn main() {
-    // Specify the printer name you want to use
-    let printer_name = "Everycom-58-series";
+    let output = Command::new("wmic")
+        .arg("printer get name")
+        .output()
+        .expect("failed to execute process");
 
-    // Prepare the document content (example: "Hello, world!")
-    let document_content = b"Hello, world!";
+    if output.status.success() {
+        let output_str = str::from_utf8(&output.stdout).expect("Invalid UTF-8");
+        let lines: Vec<&str> = output_str.lines().collect();
 
-    // Call the print_document function
-    match print_document(document_content, printer_name) {
-        Ok(_) => println!("Printing completed successfully."),
-        Err(error) => eprintln!("Printing failed: {}", error),
+        for line in lines.iter().skip(1) {
+            let printer_name = line.trim();
+            if !printer_name.is_empty() {
+                println!("Printer Name: {}", printer_name);
+            }
+        }
+    } else {
+        let error_str = str::from_utf8(&output.stderr).expect("Invalid UTF-8");
+        eprintln!("Error: {}", error_str);
     }
 }
